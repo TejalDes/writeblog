@@ -9,9 +9,13 @@
 </head>
 
 <body>
-    {%if data%}
-    {%for x in data %}
+    {%if object_list%}
+    {%for x in object_list %}
     <p>{{x.name}}</p>
+    <p>{{x.blog_text}}</p>
+    <p>{{x.blogger.name}}</p>
+    <p>{{x.date_created}}</p>
+    <hr>
     {%endfor%}
     {%else%}
     <p>No data</p>
