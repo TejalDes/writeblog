@@ -3,6 +3,7 @@ from django.views import *
 from blogs.models import *
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from .forms import AddBlogForm
 
 # view all blogs
 class ViewAll(ListView):
@@ -45,3 +46,15 @@ class ViewOne(DetailView):
         print(ind)
         bl = BlogPosts.objects.get(id=ind)
         return bl
+
+
+def AddBlogView(request):
+    context = {}
+
+    # getting the form
+    form = AddBlogForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+    context["form"] = form
+    return render(request, "blogs/blogposts_form.html", context)

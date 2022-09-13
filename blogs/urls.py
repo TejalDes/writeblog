@@ -4,4 +4,5 @@ from blogs.views import *
 urlpatterns = [
     path("", ViewAll.as_view()),
     path("id/", ViewOne.as_view()),
+    path("addblog/", AddBlogView),
 ]
